@@ -1,9 +1,9 @@
 # fb-reporter
-A free, open reporting tool for typeface development built on jupyter notebooks
+A free, open reporting library and toolset for typeface development
 
 ## License
 
-Copyright 2019 Google, LLC
+Copyright 2019 The Font Bakery Reporter Authors
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,3 +16,5 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+See the [AUTHORS.txt](AUTHORS.txt) file for copyright holder information and [CONTRIBUTORS.txt](CONTRIBUTORS.txt) for the names of project contributors. 
