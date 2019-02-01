@@ -12,8 +12,13 @@ EMAIL = "dcrossland@google.com"
 AUTHOR = "Font Bakery Reporter Authors and Contributors"
 REQUIRES_PYTHON = ">=3.6.0"
 
+INSTALL_REQUIRES = [
+    "fontTools==3.35.0",
+    "glyphsLib==3.1.4",
+    "fs<3,>=2.1.1",
+]
 # Optional packages
-EXTRAS = {
+EXTRAS_REQUIRES = {
 }
 
 this_file_path = os.path.abspath(os.path.dirname(__file__))
@@ -58,7 +63,8 @@ setup(
     package_dir={"": "Lib"},
     packages=find_packages("Lib"),
     include_package_data=True,
-    extras_require=EXTRAS,
+    install_requires=INSTALL_REQUIRES,
+    extras_require=EXTRAS_REQUIRES,
     python_requires=REQUIRES_PYTHON,
     entry_points={"console_scripts": ["fb-reporter = fbReporter.__main__:main"]},
     classifiers=[
