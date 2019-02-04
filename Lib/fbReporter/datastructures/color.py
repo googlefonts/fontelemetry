@@ -17,6 +17,9 @@ class ColorDefBase(object):
     def get_color_value(self, color_name):
         raise NotImplementedError
 
+    def set_color_value(self, color_name, value):
+        raise NotImplementedError
+
 
 # -----------------------------------
 # Glyphs App specific color objects
@@ -52,17 +55,21 @@ class GlyphsAppColorDef(ColorDefBase):
         self.pink = {"hex": "F5C2DC", "rgba": (246, 195, 220, 1.00), "value": None}
         self.ltgrey = {"hex": "E6E6E5", "rgba": (230, 229, 229, 1.00), "value": None}
         self.dkgrey = {"hex": "B2B3B3", "rgba": (178, 178, 178, 1.00), "value": None}
-        # TODO: define default state for white?
         self.white = {"hex": "FFFFFF", "rgba": (255, 255, 255, 1.00), "value": None}
 
     def get_color_hex(self, color_name):
-        pass
+        color_needle = getattr(self, color_name)
+        return color_needle["hex"]
 
     def get_color_rgba(self, color_name):
-        pass
+        color_needle = getattr(self, color_name)
+        return color_needle["rgba"]
 
     def get_color_value(self, color_name):
-        pass
+        color_needle = getattr(self, color_name)
+        return color_needle["value"]
 
-
-
+    def set_color_value(self, color_name, value):
+        color_needle = getattr(self, color_name)
+        color_needle["value"] = str(value)
+        setattr(self, color_name, color_needle)
