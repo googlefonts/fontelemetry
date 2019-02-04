@@ -1,4 +1,0 @@
-
-
-class Glyph(object):
-    pass
