@@ -12,13 +12,14 @@ import glyphsLib
 def main():
     argv = sys.argv
     if len(argv) == 1:
-        sys.stderr.write("[ERROR] Missing arguments to fb-reporter!{}".format(os.linesep))
+        sys.stderr.write(
+            "[ERROR] Missing arguments to fb-reporter!{}".format(os.linesep)
+        )
         sys.exit(1)
-    # TODO : add support for --help, --version options
     parser = argparse.ArgumentParser()
-    parser.add_argument("-v", "--version",
-                        help="display version number",
-                        action="store_true")
+    parser.add_argument(
+        "-v", "--version", help="display version number", action="store_true"
+    )
 
     args = parser.parse_args()
 
