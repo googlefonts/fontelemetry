@@ -13,7 +13,7 @@ install:
 	pip3 install --ignore-installed -r requirements.txt .
 
 install-dev:
-	pip3 install --ignore-installed -r requirements.txt -e .
+	pip3 install --ignore-installed -r requirements.txt -e ".[dev]"
 
 install-user:
 	pip3 install --ignore-installed --user .
