@@ -12,7 +12,10 @@ EMAIL = "dcrossland@google.com"
 AUTHOR = "Font Bakery Reporter Authors and Contributors"
 REQUIRES_PYTHON = ">=3.6.0"
 
-INSTALL_REQUIRES = ["fontTools==3.35.0", "glyphsLib==3.1.4", "fs<3,>=2.1.1"]
+INSTALL_REQUIRES = ["fontTools==3.35.0",
+                    "glyphsLib==3.1.4",
+                    "fs<3,>=2.1.1",
+                    "toml==0.10.0"]
 # Optional packages
 EXTRAS_REQUIRES = {
     # for developer installs
