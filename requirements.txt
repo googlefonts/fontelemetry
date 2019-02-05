@@ -1,3 +1,2 @@
 fontTools==3.35.0
 glyphsLib==3.1.4
-toml==0.10.0
