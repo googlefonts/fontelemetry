@@ -1,3 +1,7 @@
+# Library version
+from fbReporter import __version__
+
+
 # -------------------------------
 # Base classes
 # -------------------------------
@@ -11,9 +15,6 @@ class GlyphBase(object):
 
     def get_unicode(self):
         return self.unicode
-
-    def get_color_value(self):
-        raise NotImplementedError
 
 
 # ------------------------------
