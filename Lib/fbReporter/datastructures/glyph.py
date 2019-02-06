@@ -10,6 +10,12 @@ class GlyphBase(object):
         self.name = name
         self.unicode = glyphunicode
 
+    def __repr__(self):
+        return "({} v{} is defined as: {})".format(self.__class__, __version__, self.__dict__)
+
+    def __str__(self):
+        return "{}".format(self.__dict__)
+
     def get_name(self):
         return self.name
 
