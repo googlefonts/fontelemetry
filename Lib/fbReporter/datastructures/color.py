@@ -7,9 +7,15 @@ from fbReporter import __version__
 # -------------------------------
 # Base classes
 # -------------------------------
-class ColorDefBase(object):
+class ColorDefMapBase(object):
     def __init__(self):
         pass
+
+    def __repr__(self):
+        return "({} v{} is defined as: {})".format(self.__class__, __version__, self.__dict__)
+
+    def __str__(self):
+        return "{}".format(self.__dict__)
 
     def get_color_hex(self, color_name):
         raise NotImplementedError
@@ -43,9 +49,9 @@ class GlyphsAppColor(Enum):
     white = 12  # this is an uncolored glyph
 
 
-class GlyphsAppColorDef(ColorDefBase):
+class GlyphsAppColorDefMap(ColorDefMapBase):
     def __init__(self):
-        ColorDefBase.__init__(self)
+        ColorDefMapBase.__init__(self)
         self.red = {"hex": "E9B8A8", "rgba": (233, 184, 168, 1.00), "value": None}
         self.orange = {"hex": "F9D9B3", "rgba": (249, 217, 178, 1.00), "value": None}
         self.brown = {"hex": "D9CAB3", "rgba": (217, 202, 178, 1.00), "value": None}
