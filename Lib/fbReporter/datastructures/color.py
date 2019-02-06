@@ -28,19 +28,19 @@ class ColorDefBase(object):
 # Glyphs App specific color objects
 # -----------------------------------
 class GlyphsAppColor(Enum):
-    RED = 0
-    ORANGE = 1
-    BROWN = 2
-    YELLOW = 3
-    LTGREEN = 4
-    DKGREEN = 5
-    LTBLUE = 6
-    DKBLUE = 7
-    PURPLE = 8
-    PINK = 9
-    LTGREY = 10
-    DKGREY = 11
-    WHITE = 12  # this is an uncolored glyph
+    red = 0
+    orange = 1
+    brown = 2
+    yellow = 3
+    ltgreen = 4
+    dkgreen = 5
+    ltblue = 6
+    dkblue = 7
+    purple = 8
+    pink = 9
+    ltgrey = 10
+    dkgrey = 11
+    white = 12  # this is an uncolored glyph
 
 
 class GlyphsAppColorDef(ColorDefBase):
