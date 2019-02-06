@@ -3,9 +3,9 @@ from fbReporter import __version__
 
 import io
 
-import toml
+from fbReporter.parsers.toml import parse_toml
 
 
 def parse_settings(filepath):
-    with io.open(filepath) as f:
-        return toml.load(f)
+    with io.open(filepath, "r") as f:
+        return parse_toml(f)
