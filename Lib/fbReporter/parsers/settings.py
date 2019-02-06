@@ -3,9 +3,15 @@ from fbReporter import __version__
 
 import io
 
-from fbReporter.parsers.toml import parse_toml
+from fbReporter.parsers.toml import parse_toml_file, parse_toml_string
 
 
-def parse_settings(filepath):
-    with io.open(filepath, "r") as f:
-        return parse_toml(f)
+def parse_settings(filepath=None, toml_string=None):
+    if filepath is not None:
+        with io.open(filepath, "r") as f:
+            return parse_toml_file(f)
+    elif toml_string is not None:
+        return parse_toml_string(toml_string)
+    else:
+        return None
+
