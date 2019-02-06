@@ -35,8 +35,7 @@ class GlyphsSourceReader(SourceReader):
         SourceReader.__init__(self, path, source_id)
 
     def read(self):
-        with io.open(self.path, "r") as f:
-            return GlyphsSource(GSFont(f), path=self.path, source_id=self.source_id)
+        return GlyphsSource(GSFont(self.path), path=self.path, source_id=self.source_id)
 
 
 class UFOSourceReader(SourceReader):
