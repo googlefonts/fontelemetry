@@ -1,8 +1,6 @@
 # Library version
 from fbReporter import __version__
 
-import io
-
 from glyphsLib import GSFont
 from fontTools.ufoLib import UFOReader
 
