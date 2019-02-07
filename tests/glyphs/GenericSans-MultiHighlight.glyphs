@@ -558,6 +558,38 @@ width = 600;
 unicode = 007A;
 },
 {
+glyphname = u.ss01;
+lastChange = "2019-02-07 16:59:52 +0000";
+layers = (
+{
+layerId = "89D8B1C5-CC36-4090-B305-FC383B193716";
+width = 600;
+}
+);
+},
+{
+color = 0;
+glyphname = u.ss02;
+lastChange = "2019-02-07 17:00:09 +0000";
+layers = (
+{
+layerId = "89D8B1C5-CC36-4090-B305-FC383B193716";
+width = 600;
+}
+);
+},
+{
+color = 1;
+glyphname = u.ss03;
+lastChange = "2019-02-07 17:00:11 +0000";
+layers = (
+{
+layerId = "89D8B1C5-CC36-4090-B305-FC383B193716";
+width = 600;
+}
+);
+},
+{
 glyphname = zero;
 layers = (
 {
