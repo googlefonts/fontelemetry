@@ -4,7 +4,7 @@ import sys
 from setuptools import setup, find_packages
 
 # Package meta-data.
-NAME = "fbReporter"
+NAME = "fontbakery-reporter"
 DESCRIPTION = "A library and toolset for typeface software development reporting."
 LICENSE = "Apache License v2.0"
 URL = ""  # TODO
@@ -26,7 +26,7 @@ this_file_path = os.path.abspath(os.path.dirname(__file__))
 
 # Version
 main_namespace = {}
-version_fp = os.path.join(this_file_path, "Lib", "fbReporter", "__init__.py")
+version_fp = os.path.join(this_file_path, "Lib", "fontbakeryReporter", "__init__.py")
 try:
     with io.open(version_fp) as v:
         exec(v.read(), main_namespace)
@@ -67,7 +67,7 @@ setup(
     install_requires=INSTALL_REQUIRES,
     extras_require=EXTRAS_REQUIRES,
     python_requires=REQUIRES_PYTHON,
-    entry_points={"console_scripts": ["fb-reporter = fbReporter.__main__:main"]},
+    entry_points={"console_scripts": ["fontbakery-reporter = fontbakeryReporter.__main__:main"]},
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Framework :: Jupyter",

@@ -1,10 +1,10 @@
 # Library version
-from fbReporter import __version__
+from fontbakeryReporter import __version__
 
 from glyphsLib import GSFont
 from fontTools.ufoLib import UFOReader
 
-from fbReporter.datastructures.source import GlyphsSource, UFOSource
+from fontbakeryReporter.datastructures.source import GlyphsSource, UFOSource
 
 
 # -----------------------

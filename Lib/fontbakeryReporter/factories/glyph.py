@@ -1,10 +1,10 @@
 # Library version
-from fbReporter import __version__
+from fontbakeryReporter import __version__
 
-from fbReporter.datastructures.color import GlyphsAppColor
-from fbReporter.datastructures.glyph import GlyphColorHex, GlyphColorRGBA
-from fbReporter.datastructures.source import GlyphsSource, UFOSource
-from fbReporter.parsers.colordef import ColorDefParserGlyphs
+from fontbakeryReporter.datastructures.color import GlyphsAppColor
+from fontbakeryReporter.datastructures.glyph import GlyphColorHex, GlyphColorRGBA
+from fontbakeryReporter.datastructures.source import GlyphsSource, UFOSource
+from fontbakeryReporter.parsers.colordef import ColorDefParserGlyphs
 
 
 # -----------------------

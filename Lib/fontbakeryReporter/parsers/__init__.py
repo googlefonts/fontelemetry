@@ -1,2 +1,2 @@
 # Library version
-from fbReporter import __version__
+from fontbakeryReporter import __version__

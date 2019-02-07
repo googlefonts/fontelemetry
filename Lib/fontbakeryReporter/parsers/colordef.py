@@ -1,9 +1,9 @@
 # Library version
-from fbReporter import __version__
+from fontbakeryReporter import __version__
 
 import os
 import sys
-from fbReporter.datastructures.color import GlyphsAppColor, GlyphsAppColorDefMap
+from fontbakeryReporter.datastructures.color import GlyphsAppColor, GlyphsAppColorDefMap
 
 
 # Base classes

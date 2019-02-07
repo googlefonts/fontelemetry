@@ -22,6 +22,6 @@ test:
 	./testrunner.sh
 
 uninstall:
-	pip3 uninstall --yes fb-reporter
+	pip3 uninstall --yes fontbakery-reporter
 
 .PHONY: all clean dist-build dist-push install install-dev install-user test uninstall
