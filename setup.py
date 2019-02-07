@@ -4,15 +4,18 @@ import sys
 from setuptools import setup, find_packages
 
 # Package meta-data.
-NAME = "fbReporter"
+NAME = "fontbakery-reporter"
 DESCRIPTION = "A library and toolset for typeface software development reporting."
 LICENSE = "Apache License v2.0"
-URL = ""  # TODO
+URL = "https://github.com/googlefonts/fontbakery-reporter"
 EMAIL = "dcrossland@google.com"
 AUTHOR = "Font Bakery Reporter Authors and Contributors"
 REQUIRES_PYTHON = ">=3.6.0"
 
-INSTALL_REQUIRES = ["fontTools==3.35.0", "glyphsLib==3.1.4", "fs<3,>=2.1.1"]
+INSTALL_REQUIRES = ["fontTools==3.35.0",
+                    "glyphsLib==3.1.4",
+                    "fs<3,>=2.1.1",
+                    "toml==0.10.0"]
 # Optional packages
 EXTRAS_REQUIRES = {
     # for developer installs
@@ -23,7 +26,7 @@ this_file_path = os.path.abspath(os.path.dirname(__file__))
 
 # Version
 main_namespace = {}
-version_fp = os.path.join(this_file_path, "Lib", "fbReporter", "__init__.py")
+version_fp = os.path.join(this_file_path, "Lib", "fontbakeryReporter", "__init__.py")
 try:
     with io.open(version_fp) as v:
         exec(v.read(), main_namespace)
@@ -64,7 +67,7 @@ setup(
     install_requires=INSTALL_REQUIRES,
     extras_require=EXTRAS_REQUIRES,
     python_requires=REQUIRES_PYTHON,
-    entry_points={"console_scripts": ["fb-reporter = fbReporter.__main__:main"]},
+    entry_points={"console_scripts": ["fontbakery-reporter = fontbakeryReporter.__main__:main"]},
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Framework :: Jupyter",
