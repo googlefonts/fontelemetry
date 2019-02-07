@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 NAME = "fontbakery-reporter"
 DESCRIPTION = "A library and toolset for typeface software development reporting."
 LICENSE = "Apache License v2.0"
-URL = ""  # TODO
+URL = "https://github.com/googlefonts/fontbakery-reporter"
 EMAIL = "dcrossland@google.com"
 AUTHOR = "Font Bakery Reporter Authors and Contributors"
 REQUIRES_PYTHON = ">=3.6.0"
