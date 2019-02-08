@@ -18,10 +18,13 @@ install-dev:
 install-user:
 	pip3 install --ignore-installed --user .
 
+jupyter:
+	 python ~/venv/fontbakery-reporter/lib/python3.7/site-packages/jupyter.py notebook
+
 test:
 	./testrunner.sh
 
 uninstall:
 	pip3 uninstall --yes fontbakery-reporter
 
-.PHONY: all clean dist-build dist-push install install-dev install-user test uninstall
+.PHONY: all clean dist-build dist-push install install-dev install-user jupyter test uninstall
