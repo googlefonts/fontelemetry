@@ -1,9 +1,9 @@
 # Library version
-from fontbakeryReporter import __version__
+from fontelemetry import __version__
 
 import os
 import sys
-from fontbakeryReporter.datastructures.color import GlyphsAppColor, GlyphsAppColorDefMap
+from fontelemetry.datastructures.color import GlyphsAppColor, GlyphsAppColorDefMap
 
 
 # Base classes

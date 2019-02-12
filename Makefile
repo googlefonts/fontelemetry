@@ -19,7 +19,7 @@ install-user:
 	pip3 install --ignore-installed --user .
 
 jupyter:
-	 python ~/venv/fontbakery-reporter/lib/python3.7/site-packages/jupyter.py notebook
+	 python ~/venv/fontelemetry/lib/python3.7/site-packages/jupyter.py notebook
 
 test:
 	./testrunner.sh

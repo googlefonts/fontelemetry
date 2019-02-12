@@ -1,5 +1,5 @@
 # Library version
-from fontbakeryReporter import __version__
+from fontelemetry import __version__
 
 import toml
 

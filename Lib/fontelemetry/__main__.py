@@ -1,4 +1,4 @@
-# Copyright 2019 Font Bakery Reporter Authors and Contributors
+# Copyright 2019 Fontelemetry Authors and Contributors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@ import os
 import runpy
 import sys
 
-from fontbakeryReporter import __version__
+from fontelemetry import __version__
 
 import fontTools
 import glyphsLib
@@ -27,7 +27,7 @@ def main():
     argv = sys.argv
     if len(argv) == 1:
         sys.stderr.write(
-            "[ERROR] Missing arguments to fontbakery-reporter!{}".format(os.linesep)
+            "[ERROR] Missing arguments to fontelemetry!{}".format(os.linesep)
         )
         sys.exit(1)
     # argparse parser
@@ -40,11 +40,11 @@ def main():
 
     # command line logic implementation
     if args.version:
-        print("fontbakery-reporter v{}".format(__version__))
+        print("fontelemetry v{}".format(__version__))
         sys.exit(0)
 
     # TODO: implement execution of module-specific code as command suite
-    module = "fontbakeryReporter." + argv[0]
+    module = "fontelemetry." + argv[0]
 
     runpy.run_module(module, run_name="__main__")
 

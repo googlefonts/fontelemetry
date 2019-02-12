@@ -1,9 +1,9 @@
 # Library version
-from fontbakeryReporter import __version__
+from fontelemetry import __version__
 
 import io
 
-from fontbakeryReporter.parsers.toml import parse_toml_file, parse_toml_string
+from fontelemetry.parsers.toml import parse_toml_file, parse_toml_string
 
 
 def parse_settings(filepath=None, toml_string=None):

@@ -1,10 +1,10 @@
 # Library version
-from fontbakeryReporter import __version__
+from fontelemetry import __version__
 
-from fontbakeryReporter.datastructures.color import GlyphsAppColor
-from fontbakeryReporter.datastructures.glyph import GlyphColorHex, GlyphColorRGBA
-from fontbakeryReporter.datastructures.source import GlyphsSource, UFOSource
-from fontbakeryReporter.parsers.colordef import ColorDefParserGlyphs
+from fontelemetry.datastructures.color import GlyphsAppColor
+from fontelemetry.datastructures.glyph import GlyphColorHex, GlyphColorRGBA
+from fontelemetry.datastructures.source import GlyphsSource, UFOSource
+from fontelemetry.parsers.colordef import ColorDefParserGlyphs
 
 
 # -----------------------

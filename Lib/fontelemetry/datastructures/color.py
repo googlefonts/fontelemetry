@@ -1,7 +1,7 @@
 from enum import Enum
 
 # Library version
-from fontbakeryReporter import __version__
+from fontelemetry import __version__
 
 
 # -------------------------------
