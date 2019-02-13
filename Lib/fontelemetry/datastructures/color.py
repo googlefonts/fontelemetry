@@ -22,48 +22,69 @@ from fontelemetry import __version__
 # Base classes
 # -------------------------------
 class ColorDefMapBase(object):
+    """Base class for glyph mark color definition mapped objects.
+
+    These objects are containers for key:value mapping of
+    color name : user-specified definition for the color name.
+    """
+
     def __init__(self):
         pass
 
     def __repr__(self):
-        return "({} v{} is defined as: {})".format(self.__class__, __version__, self.__dict__)
+        return "({} v{} is defined as: {})".format(
+            self.__class__, __version__, self.__dict__
+        )
 
     def __str__(self):
         return "{}".format(self.__dict__)
 
     def get_color_hex(self, color_name):
+        """Returns the hexadecimal formatted color encoding for a color value.
+
+        Args:
+            color_name: (string) a color name that should match the self.[color_name] class attribute
+
+        Returns:
+            A hexadecimal formatted color value formatted as a string
+        """
         raise NotImplementedError
 
     def get_color_rgba(self, color_name):
+        """Returns the RGBA formatted color encoding for a color value.
+
+        Args:
+            color_name: (string) a color name that should match the self.[color_name] class attribute
+
+        Returns:
+            A RBGA formatted color value formatted as a string
+        """
         raise NotImplementedError
 
     def get_color_value(self, color_name):
+        """Returns the user-specified definition value for a color name.
+
+        Args:
+            color_name: (string) A color name that should match the self.[color_name] class attribute
+
+        Returns:
+            A definition value for the color name formatted as a string
+        """
         raise NotImplementedError
 
     def set_color_value(self, color_name, value):
+        """Sets the user-specified definition value for a color name.
+
+        Args:
+            color_name: (string) A color name that should match the self.[color_name] class attribute
+            value: (string) A definition value for the color_name
+        """
         raise NotImplementedError
 
 
-# -----------------------------------
-# Glyphs App specific color objects
-# -----------------------------------
-class GlyphsAppColor(Enum):
-    red = 0
-    orange = 1
-    brown = 2
-    yellow = 3
-    ltgreen = 4
-    dkgreen = 5
-    ltblue = 6
-    dkblue = 7
-    purple = 8
-    pink = 9
-    ltgrey = 10
-    dkgrey = 11
-    white = 12  # this is an uncolored glyph
-
-
 class GlyphsAppColorDefMap(ColorDefMapBase):
+    """See base class."""
+
     def __init__(self):
         ColorDefMapBase.__init__(self)
         self.red = {"hex": "E9B8A8", "rgba": (233, 184, 168, 1.00), "value": None}
@@ -96,3 +117,28 @@ class GlyphsAppColorDefMap(ColorDefMapBase):
         color_needle = getattr(self, color_name)
         color_needle["value"] = str(value)
         setattr(self, color_name, color_needle)
+
+
+# -----------------------------------
+# Glyphs App specific color object
+# -----------------------------------
+class GlyphsAppColor(Enum):
+    """Contains Glyphs application specific glyph mark color data definitions.
+
+    The color name is mapped to the GlyphsApp integer index value for the
+    `color` fields in the *.glyphs source file specification
+    """
+
+    red = 0
+    orange = 1
+    brown = 2
+    yellow = 3
+    ltgreen = 4
+    dkgreen = 5
+    ltblue = 6
+    dkblue = 7
+    purple = 8
+    pink = 9
+    ltgrey = 10
+    dkgrey = 11
+    white = 12  # this is an uncolored glyph
