@@ -109,5 +109,5 @@ venv.bak/
 .idea
 
 # Demo directory contents
-demo/.ipynb_checkpoints
+.ipynb_checkpoints
 Untitled.ipynb
