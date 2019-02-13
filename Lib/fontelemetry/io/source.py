@@ -33,12 +33,15 @@ class SourceReader(object):
         path: path to source file or directory
         source_id: unique ID string for the Source object
     """
+
     def __init__(self, path, source_id):
         self.path = path
         self.source_id = source_id
 
     def __repr__(self):
-        return "({} v{} is defined as: {})".format(self.__class__, __version__, self.__dict__)
+        return "({} v{} is defined as: {})".format(
+            self.__class__, __version__, self.__dict__
+        )
 
     def __str__(self):
         return "{}".format(self.__dict__)
@@ -57,6 +60,7 @@ class GlyphsSourceReader(SourceReader):
         path: path to glyphs source file
         source_id: unique ID string for the Source object
     """
+
     def __init__(self, path, source_id=None):
         SourceReader.__init__(self, path, source_id)
 
@@ -73,6 +77,7 @@ class UFOSourceReader(SourceReader):
         path: path to UFO source directory
         source_id: unique ID string for the Source object
     """
+
     def __init__(self, path, source_id=None):
         SourceReader.__init__(self, path, source_id)
 
