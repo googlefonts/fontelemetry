@@ -19,8 +19,24 @@ import toml
 
 
 def parse_toml_file(file_object):
+    """Parses toml data using a file-like object to a dictionary.
+
+    Args:
+        file_object: (file-like object) file like object instantiated from a toml formatted file
+
+    Returns:
+        A dictionary with parsed toml data fields.
+    """
     return toml.load(file_object)
 
 
 def parse_toml_string(toml_string):
+    """Parses a toml formatted string to a dictionary.
+
+    Args:
+        toml_string: (string) a toml formatted string
+
+    Returns:
+        A dictionary with parsed toml data fields.
+    """
     return toml.loads(toml_string)
