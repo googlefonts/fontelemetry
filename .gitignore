@@ -108,5 +108,6 @@ venv.bak/
 # PyCharm
 .idea
 
-# Demo directory
-demo
+# Demo directory contents
+demo/.ipynb_checkpoints
+Untitled.ipynb
