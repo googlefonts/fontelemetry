@@ -25,6 +25,14 @@ from fontelemetry.datastructures.source import GlyphsSource, UFOSource
 # Base classes
 # -----------------------
 class SourceReader(object):
+    """Reads typeface source and returns an instantiated fontelemetry.datastructures.source.Source object.
+
+    Classes that inherit this base class support glyphs and UFO specified source files.
+
+    Attributes:
+        path: path to source file or directory
+        source_id: unique ID string for the Source object
+    """
     def __init__(self, path, source_id):
         self.path = path
         self.source_id = source_id
@@ -43,16 +51,32 @@ class SourceReader(object):
 # Inherited classes
 # ------------------------------------
 class GlyphsSourceReader(SourceReader):
+    """Reads glyphs format typeface source.
+
+    Attributes:
+        path: path to glyphs source file
+        source_id: unique ID string for the Source object
+    """
     def __init__(self, path, source_id=None):
         SourceReader.__init__(self, path, source_id)
 
     def read(self):
+        """Reads glyphs specified source file from source file path and returns a
+        fontelemetry.datastructures.source.GlyphsSource object"""
         return GlyphsSource(GSFont(self.path), path=self.path, source_id=self.source_id)
 
 
 class UFOSourceReader(SourceReader):
-    def __init__(self, filepath, source_id=None):
-        SourceReader.__init__(self, filepath, source_id)
+    """Reads UFO format typeface source.
+
+    Attributes:
+        path: path to UFO source directory
+        source_id: unique ID string for the Source object
+    """
+    def __init__(self, path, source_id=None):
+        SourceReader.__init__(self, path, source_id)
 
     def read(self):
+        """Reads UFO format source file from source file path and returns a
+        fontelemetry.datastructures.source.UFOSource object"""
         return UFOSource(UFOReader(self.path), path=self.path, source_id=self.source_id)
