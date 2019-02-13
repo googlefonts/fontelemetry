@@ -20,7 +20,29 @@ from fontelemetry import __version__
 # Base classes
 # -----------------------
 class Source(object):
+    """A source specification specific object that holds source data.
+
+    The Source object is instantiated with an external library object that
+    is instantiated on source read and used to manipulate source file data
+    along with object attributes that maintain the original source file path
+    and define a retrievable calling code defined unique ID field.
+
+    Attributes:
+        obj: (instance-specific) A source file object that is instantiated with an external library
+        path: (string) source file or directory path
+        id: (string) unique ID for an instantiated Source object
+
+    For glyphs source, the object is a glyphsLib.GSFont object.
+    For UFO source, the object is a fontTools.ufoLib.glifLib.GlyphSet object
+    """
     def __init__(self, source_object, path=None, source_id=None):
+        """Inits Source object with source file read data from external libraries.
+
+        Args:
+            source_object: (instance-specific) A source file object that is instantiated with an external library
+            path: (string) path to file or directory used to instantiate source_object
+            source_id: (string) unique ID value for this object
+        """
         self.obj = source_object
         self.path = path
         self.id = source_id
@@ -32,9 +54,11 @@ class Source(object):
         return "{}".format(self.__dict__)
 
     def get_source_path(self):
+        """Returns source path attribute string."""
         return self.path
 
     def yield_ordered_glyphobj(self):
+        """Generator that yields ordered external library glyph-level objects"""
         raise NotImplementedError
 
 
@@ -42,6 +66,7 @@ class Source(object):
 # Inherited classes
 # ------------------------------------
 class GlyphsSource(Source):
+    """See base class."""
     def __init__(self, source_object, path=None, source_id=None):
         Source.__init__(self, source_object, path=path, source_id=source_id)
 
@@ -51,6 +76,7 @@ class GlyphsSource(Source):
 
 
 class UFOSource(Source):
+    """See base class."""
     def __init__(self, source_object, path=None, source_id=None):
         Source.__init__(self, source_object, path=path, source_id=source_id)
 
