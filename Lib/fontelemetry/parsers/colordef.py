@@ -22,6 +22,7 @@ from fontelemetry.datastructures.color import GlyphsAppColor, GlyphsAppColorDefM
 
 # Base classes
 class ColorDefParser(object):
+    """"""
     def __init__(self, settings):
         self.settings = settings
         self.colordef = None
@@ -61,7 +62,7 @@ class ColorDefParserGlyphs(ColorDefParser):
                 self.colordef_map.set_color_value(color, definition_value)
             else:
                 sys.stderr.write(
-                    "[Font Bakery Reporter] Settings contain the color '{}' which is not a valid color!  Ignored...{}".format(
+                    "Settings contain the color '{}' which is not a valid color!  Ignored...{}".format(
                         color, os.linesep
                     )
                 )
