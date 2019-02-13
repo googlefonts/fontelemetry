@@ -35,6 +35,7 @@ class Source(object):
     For glyphs source, the object is a glyphsLib.GSFont object.
     For UFO source, the object is a fontTools.ufoLib.glifLib.GlyphSet object
     """
+
     def __init__(self, source_object, path=None, source_id=None):
         """Inits Source object with source file read data from external libraries.
 
@@ -48,7 +49,9 @@ class Source(object):
         self.id = source_id
 
     def __repr__(self):
-        return "({} v{} is defined as: {})".format(self.__class__, __version__, self.__dict__)
+        return "({} v{} is defined as: {})".format(
+            self.__class__, __version__, self.__dict__
+        )
 
     def __str__(self):
         return "{}".format(self.__dict__)
@@ -67,6 +70,7 @@ class Source(object):
 # ------------------------------------
 class GlyphsSource(Source):
     """See base class."""
+
     def __init__(self, source_object, path=None, source_id=None):
         Source.__init__(self, source_object, path=path, source_id=source_id)
 
@@ -77,13 +81,10 @@ class GlyphsSource(Source):
 
 class UFOSource(Source):
     """See base class."""
+
     def __init__(self, source_object, path=None, source_id=None):
         Source.__init__(self, source_object, path=path, source_id=source_id)
 
     def yield_ordered_glyphobj(self):
         # TODO
         pass
-
-
-
-
