@@ -61,18 +61,18 @@ class OrderedGlyphColorListFactory(FactoryBase):
         # -- did not define source object
         if self.source_type is None:
             raise TypeError(
-                "[Font Bakery Reporter] {}.  Invalid source object!".format(
+                "{}.  Invalid source object!".format(
                     self.msg_fail_instantiation))
         # -- did not define valid glyphs source color specification
         if self.source_type == "glyphs" and self.color_spec not in self.glyphssource_valid_color_specs:
-            raise TypeError("[Font Bakery Reporter] {}.  Invalid color specification for glyphs source. Did not include a value in {}!".format(self.msg_fail_instantiation, self.glyphssource_valid_color_specs))
+            raise TypeError("{}.  Invalid color specification for glyphs source. Did not include a value in {}!".format(self.msg_fail_instantiation, self.glyphssource_valid_color_specs))
         # -- did not define valid UFO source color specification
         if self.source_type == "ufo" and self.color_spec not in self.ufosource_valid_color_specs:
-            raise TypeError("[Font Bakery Reporter] {}.  Invalid color specification for UFO source. Did not include a value in {}!".format(self.msg_fail_instantiation, self.ufosource_valid_color_specs))
+            raise TypeError("{}.  Invalid color specification for UFO source. Did not include a value in {}!".format(self.msg_fail_instantiation, self.ufosource_valid_color_specs))
         # -- did not define colordef settings
         if self.settings is None:
             raise TypeError(
-                "[Font Bakery Reporter] {}.  Did not receive color definition settings on instantiation!".format(
+                "{}.  Did not receive color definition settings on instantiation!".format(
                     self.msg_fail_instantiation))
 
     def _get_glyphcolor_obj(self, glyphname, glyphunicode, glyphcolor, colorvalue):
