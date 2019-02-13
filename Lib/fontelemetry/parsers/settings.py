@@ -21,6 +21,15 @@ from fontelemetry.parsers.toml import parse_toml_file, parse_toml_string
 
 
 def parse_settings(filepath=None, toml_string=None):
+    """Parses a toml formatted settings file to a Python dictionary.
+
+    Args:
+        filepath: (string, default) path to settings file
+        toml_string: (string, optional) toml formatted string
+
+    Returns:
+        Dictionary with parsed toml data.
+    """
     if filepath is not None:
         with io.open(filepath, "r") as f:
             return parse_toml_file(f)
@@ -28,4 +37,3 @@ def parse_settings(filepath=None, toml_string=None):
         return parse_toml_string(toml_string)
     else:
         return None
-
