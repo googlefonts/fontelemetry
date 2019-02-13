@@ -25,16 +25,21 @@ from fontelemetry.parsers.colordef import ColorDefParserGlyphs
 # Base classes
 # -----------------------
 class FactoryBase(object):
+    """A base factory class for instantiation of objects."""
+
     def __init__(self):
         pass
 
     def __repr__(self):
-        return "({} v{} is defined as: {})".format(self.__class__, __version__, self.__dict__)
+        return "({} v{} is defined as: {})".format(
+            self.__class__, __version__, self.__dict__
+        )
 
     def __str__(self):
         return "{}".format(self.__dict__)
 
     def get(self):
+        """Returns instantiated object."""
         raise NotImplementedError
 
 
@@ -42,7 +47,20 @@ class FactoryBase(object):
 # Inherited classes
 # --------------------------------
 class OrderedGlyphColorListFactory(FactoryBase):
-    def __init__(self, source_obj,  settings=None, color_spec=None):
+    """Returns an Python list containing instantiated
+    fontelemetry.datastructures.glyph.GlyphColor[Format] objects.
+
+    Attributes:
+        glyphssource_valid_color_specs: valid color format specs in glyphs source
+        ufosource_valid_color_specs: valid color format specs in UFO source
+        source_obj: A fontelemetry.datastructures.source.Source derived object
+        source_type: source type label string (either "glyphs" or "ufo")
+        settings: settings dictionary that follows fontelemetry settings specification
+        color_spec: color format specification used to define the GlyphColor[Format] objects ("hex" or "rgba")
+
+    """
+
+    def __init__(self, source_obj, settings=None, color_spec=None):
         FactoryBase.__init__(self)
         self.glyphssource_valid_color_specs = ["hex", "rgba"]
         self.ufosource_valid_color_specs = ["rgba"]
@@ -55,25 +73,43 @@ class OrderedGlyphColorListFactory(FactoryBase):
             self.source_type = None
         self.settings = settings
         self.color_spec = color_spec
-        self.msg_fail_instantiation = "Failed instantiation of OrderedGlyphColorListFactory"
+        self._msg_fail_instantiation = (
+            "Failed instantiation of OrderedGlyphColorListFactory"
+        )
 
         # instantiation validations
         # -- did not define source object
         if self.source_type is None:
             raise TypeError(
-                "{}.  Invalid source object!".format(
-                    self.msg_fail_instantiation))
+                "{}.  Invalid source object!".format(self._msg_fail_instantiation)
+            )
         # -- did not define valid glyphs source color specification
-        if self.source_type == "glyphs" and self.color_spec not in self.glyphssource_valid_color_specs:
-            raise TypeError("{}.  Invalid color specification for glyphs source. Did not include a value in {}!".format(self.msg_fail_instantiation, self.glyphssource_valid_color_specs))
+        if (
+            self.source_type == "glyphs"
+            and self.color_spec not in self.glyphssource_valid_color_specs
+        ):
+            raise TypeError(
+                "{}.  Invalid color specification for glyphs source. Did not include a value in {}!".format(
+                    self._msg_fail_instantiation, self.glyphssource_valid_color_specs
+                )
+            )
         # -- did not define valid UFO source color specification
-        if self.source_type == "ufo" and self.color_spec not in self.ufosource_valid_color_specs:
-            raise TypeError("{}.  Invalid color specification for UFO source. Did not include a value in {}!".format(self.msg_fail_instantiation, self.ufosource_valid_color_specs))
+        if (
+            self.source_type == "ufo"
+            and self.color_spec not in self.ufosource_valid_color_specs
+        ):
+            raise TypeError(
+                "{}.  Invalid color specification for UFO source. Did not include a value in {}!".format(
+                    self._msg_fail_instantiation, self.ufosource_valid_color_specs
+                )
+            )
         # -- did not define colordef settings
         if self.settings is None:
             raise TypeError(
                 "{}.  Did not receive color definition settings on instantiation!".format(
-                    self.msg_fail_instantiation))
+                    self._msg_fail_instantiation
+                )
+            )
 
     def _get_glyphcolor_obj(self, glyphname, glyphunicode, glyphcolor, colorvalue):
         if self.color_spec == "hex":
@@ -91,6 +127,9 @@ class OrderedGlyphColorListFactory(FactoryBase):
         pass
 
     def get(self):
+        """Returns an ordered list of instantiated fontelemetry.datastructures.GlyphColor[Format] objects
+        based upon glyph order in source file(s), glyph mark color in source file(s), and color definitions
+        indicated at OrderedGlyphColorListFactory instantiation time."""
         glyphcolorobj_list = []
 
         if self.source_type == "glyphs":
@@ -116,10 +155,11 @@ class OrderedGlyphColorListFactory(FactoryBase):
                 else:
                     glyphcolor = None
                 glyph_color_value = colordef_settings.get_color_value(glyph_color_name)
-                glyphcolorobj_list.append(self._get_glyphcolor_obj(glyphname,
-                                                                   glyphunicode,
-                                                                   glyphcolor,
-                                                                   glyph_color_value))
+                glyphcolorobj_list.append(
+                    self._get_glyphcolor_obj(
+                        glyphname, glyphunicode, glyphcolor, glyph_color_value
+                    )
+                )
             return glyphcolorobj_list
         elif self.source_type == "ufo":
             # TODO
