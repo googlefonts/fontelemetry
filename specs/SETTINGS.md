@@ -9,10 +9,14 @@ The following text shows all supported settings.  *Please be aware that this pro
 
 ```toml
 
-# Glyph mark color definitions
-[colordefinitions]
+# Color definitions
+[color]
 
-    [colordefinitions.glyphs]
+    # [ glyphs source mark color definitions ]
+    # glyphs source files have a fixed mark color range that includes the following color options.
+    # fontelemetry supports one or more color definitions in this field and the color name keys
+    # must use the names as specified below.
+    [color.mark.glyphs]
     red = "Status 1"
     orange =  "Status 2"
     brown = "Status 3"
@@ -27,6 +31,8 @@ The following text shows all supported settings.  *Please be aware that this pro
     dkgrey = "Status 12"
     white = "Done"
 
-    [colordefinitions.ufo]
+    # [ UFO source mark color definitions ]
+    # UFO source files support use of the entire RGBA spectrum for glyph mark colors.
+    [color.mark.ufo]
 
 ```

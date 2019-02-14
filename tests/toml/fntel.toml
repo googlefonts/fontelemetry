@@ -1,8 +1,8 @@
 
 
-[colordefinitions]
+[color]
 
-    [colordefinitions.glyphs]
+    [color.mark.glyphs]
     red = "Status 1"
     orange =  "Status 2"
     brown = "Status 3"
@@ -17,4 +17,5 @@
     dkgrey = "Status 12"
     white = "Done"
 
-    [colordefinitions.ufo]
+    [color.mark.ufo]
+    red = []

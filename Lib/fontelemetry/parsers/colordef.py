@@ -73,7 +73,7 @@ class ColorDefParserGlyphs(ColorDefParser):
 
     def _define_parser_colordef_attr(self):
         self.colordef_map = GlyphsAppColorDefMap()
-        self.colordef_settings = self.settings["colordefinitions"]["glyphs"]
+        self.colordef_settings = self.settings["color"]["mark"]["glyphs"]
 
     def parse(self):
         """Parses data for glyph mark color definitions in glyphs source files
