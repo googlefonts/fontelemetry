@@ -14,3 +14,25 @@
 
 # Library version
 from fontelemetry import __version__
+
+
+# -----------------------
+# Base classes
+# -----------------------
+class FactoryBase(object):
+    """A base factory class for instantiation of objects."""
+
+    def __init__(self):
+        pass
+
+    def __repr__(self):
+        return "({} v{} is defined as: {})".format(
+            self.__class__, __version__, self.__dict__
+        )
+
+    def __str__(self):
+        return "{}".format(self.__dict__)
+
+    def get(self):
+        """Returns instantiated object."""
+        raise NotImplementedError
