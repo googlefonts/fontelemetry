@@ -60,7 +60,7 @@ class ColorDefParserGlyphs(ColorDefParser):
     Attributes:
         settings: settings dictionary that follows fontelemetry settings specification
         colordef_map: fontelemetry.datastructures.color.GlyphsAppColorDefMap
-        colordef_settings: settings["colordefinitions"][SOURCE FORMAT] field of settings
+        colordef_settings: fontelemetry formatted settings as dictionary
     """
 
     def __init__(self, settings):
@@ -92,3 +92,33 @@ class ColorDefParserGlyphs(ColorDefParser):
                 )
 
         return self.colordef_map
+
+
+class ColorDefParserUFO(ColorDefParser):
+    """Parses glyph mark color definitions from UFO source files.
+
+    Attributes:
+        settings: settings dictionary that follows fontelemetry settings specification
+        colordef_map: fontelemetry.datastructures.color.GlyphsAppColorDefMap
+        colordef_settings: fontelemetry settings formatted as dictionary
+    """
+    def __init__(self, settings):
+        """Inits ColorDefParserGlyphs.
+
+        UFO source file public.markColor field allows for the entire RGBA spectrum so there is no
+        validation testing of the color in this parser.
+        """
+        ColorDefParser.__init__(self, settings)
+        self._define_parser_colordef_attr()
+
+    def _define_parser_colordef_attr(self):
+        # TODO: define ColorDefMap for UFO then return to this code
+        self.colordef_map = UFOColorDefMap()
+        self.colordef_settings = self.settings["color"]["mark"]["ufo"]
+
+    def parse(self):
+        """Parses data for glyph mark color definitions in glyphs source files
+        and returns a fontelemetry.datastructures.color.UFOColorDefMap."""
+        for color in self.colordef_settings:
+            print(color)
+
