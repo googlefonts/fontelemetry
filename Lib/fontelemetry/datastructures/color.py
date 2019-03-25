@@ -119,6 +119,13 @@ class GlyphsAppColorDefMap(ColorDefMapBase):
         setattr(self, color_name, color_needle)
 
 
+class UFOColorDefMap(ColorDefMapBase):
+    """See base class."""
+    def __init__(self):
+        pass
+
+
+
 # -----------------------------------
 # Glyphs App specific color object
 # -----------------------------------
