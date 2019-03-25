@@ -122,8 +122,7 @@ class GlyphsAppColorDefMap(ColorDefMapBase):
 class UFOColorDefMap(ColorDefMapBase):
     """See base class."""
     def __init__(self):
-        pass
-
+        ColorDefMapBase.__init__(self)
 
 
 # -----------------------------------
