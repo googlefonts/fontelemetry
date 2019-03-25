@@ -1,6 +1,6 @@
 ### Fontelemetry Settings
 
-The fontelemetry settings file is named `fntel.toml` (pronounced `/fintel/`) and can be stored on any file path local to the project that uses fontelemetry.  
+The fontelemetry settings file is named `fontelemetry.toml` and can be stored on any file path local to the project that uses fontelemetry.  
 
 The file must be formatted according to the [TOML specification](https://github.com/toml-lang/toml#user-content-spec).  This file is parsed to a Python dictionary with the Python [toml package](https://github.com/uiri/toml) for use in fontelemetry.  Most fontelemetry objects support manual construction of a Python dictionary that mimics the parsed format of the settings file.
 
