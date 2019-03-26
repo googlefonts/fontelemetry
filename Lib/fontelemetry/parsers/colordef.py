@@ -17,7 +17,7 @@ from fontelemetry import __version__
 
 import os
 import sys
-from fontelemetry.datastructures.color import GlyphsAppColor, GlyphsAppColorDefMap
+from fontelemetry.datastructures.color import GlyphsAppColor, GlyphsAppColorDefMap, UFOColorDefMap
 
 
 # Base classes
@@ -112,13 +112,16 @@ class ColorDefParserUFO(ColorDefParser):
         self._define_parser_colordef_attr()
 
     def _define_parser_colordef_attr(self):
-        # TODO: define ColorDefMap for UFO then return to this code
         self.colordef_map = UFOColorDefMap()
         self.colordef_settings = self.settings["color"]["mark"]["ufo"]
 
     def parse(self):
-        """Parses data for glyph mark color definitions in glyphs source files
+        """Parses data for glyph mark color definitions in UFO source files
         and returns a fontelemetry.datastructures.color.UFOColorDefMap."""
-        for color in self.colordef_settings:
-            print(color)
+        for color_name in self.colordef_settings:
+            self.colordef_map.set_color_attr(color_name)
+            self.colordef_map.set_color_rgba(color_name, self.colordef_settings[color_name][0])
+            self.colordef_map.set_color_value(color_name, self.colordef_settings[color_name][1])
+
+        return self.colordef_map
 
