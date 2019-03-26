@@ -124,12 +124,39 @@ class UFOColorDefMap(ColorDefMapBase):
     def __init__(self):
         ColorDefMapBase.__init__(self)
 
+    def get_color_hex(self, color_name):
+        """Hexadecimal color data is not supported in UFO source files"""
+        return None
+
+    def get_color_rgba(self, color_name):
+        attr = getattr(self, color_name)
+        return attr["rgba"]
+
+    def get_color_value(self, color_name):
+        attr = getattr(self, color_name)
+        return attr["value"]
+
+    def set_color_attr(self, color_name):
+        setattr(self, color_name, {})
+
+    def set_color_rgba(self, color_name, color_rgba):
+        attr = getattr(self, color_name)
+        attr["rgba"] = color_rgba
+        setattr(self, color_name, attr)
+
+    def set_color_value(self, color_name, value):
+        attr = getattr(self, color_name)
+        attr["value"] = value
+        setattr(self, color_name, attr)
+
 
 # -----------------------------------
 # Glyphs App specific color object
 # -----------------------------------
 class GlyphsAppColor(Enum):
     """Contains Glyphs application specific glyph mark color data definitions.
+    These color values are defined by the Glyphs font editor application and
+    are fixed values.
 
     The color name is mapped to the GlyphsApp integer index value for the
     `color` fields in the *.glyphs source file specification
