@@ -15,6 +15,8 @@
 # Library version
 from fontelemetry import __version__
 
+from fontelemetry.datastructures.glyph import GlyphDummyObj
+
 
 # -----------------------
 # Base classes
@@ -60,10 +62,6 @@ class Source(object):
         """Returns source path attribute string."""
         return self.path
 
-    def yield_ordered_glyphobj(self):
-        """Generator that yields ordered external library glyph-level objects"""
-        raise NotImplementedError
-
 
 # ------------------------------------
 # Inherited classes
@@ -85,6 +83,17 @@ class UFOSource(Source):
     def __init__(self, source_object, path=None, source_id=None):
         Source.__init__(self, source_object, path=path, source_id=source_id)
 
+
+class UFOGlyphSetSource(Source):
+    """See base class."""
+
+    def __init__(self, source_object, path=None, source_id=None):
+        Source.__init__(self, source_object, path=path, source_id=source_id)
+
     def yield_ordered_glyphobj(self):
-        # TODO
-        pass
+        for glif in self.obj.contents:
+            gobj = GlyphDummyObj()
+            self.obj.readGlyph(glif, glyphObject=gobj)
+            yield gobj
+
+
