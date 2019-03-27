@@ -16,6 +16,14 @@
 from fontelemetry import __version__
 
 
+# --------------------------------
+# Dummy class for fontTools writes
+# --------------------------------
+class GlyphDummyObj(object):
+    def __init__(self):
+        pass
+
+
 # -------------------------------
 # Base classes
 # -------------------------------
