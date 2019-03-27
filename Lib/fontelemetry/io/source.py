@@ -15,8 +15,11 @@
 # Library version
 from fontelemetry import __version__
 
+import os
+
 from glyphsLib import GSFont
 from fontTools.ufoLib import UFOReader
+from fontTools.ufoLib.glifLib import GlyphSet
 
 from fontelemetry.datastructures.source import GlyphsSource, UFOSource
 
@@ -85,3 +88,20 @@ class UFOSourceReader(SourceReader):
         """Reads UFO format source file from source file path and returns a
         fontelemetry.datastructures.source.UFOSource object"""
         return UFOSource(UFOReader(self.path), path=self.path, source_id=self.source_id)
+
+
+class UFOGlyphSetReader(SourceReader):
+    """Reads UFO format glif design files.
+
+    Attributes:
+        path: path to UFO source directory
+        source_id: unique ID string for the Source object
+    """
+
+    def __init__(self, path, source_id=None):
+        SourceReader.__init__(self, path, source_id)
+
+    def read(self):
+        ufo_glyphs_dir_path = os.path.join(self.path, "glyphs")
+        return GlyphSet(ufo_glyphs_dir_path)
+
