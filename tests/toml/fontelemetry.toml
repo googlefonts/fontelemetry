@@ -18,7 +18,7 @@
     white = "Done"
 
     [color.mark.ufo]
-    red = ["(233, 184, 168, 1.00)", "Status 1"]
-    orange = ["(249, 217, 178, 1.00)", "Status 2"]
-    yellow = ["(251, 244, 183, 1.00)", "Status 3"]
-    white = ["(255, 255, 255, 1.00)", "Done"]
+    red = ["233, 184, 168, 1.00", "Status 1"]
+    orange = ["249, 217, 178, 1.00", "Status 2"]
+    yellow = ["251, 244, 183, 1.00", "Status 3"]
+    white = ["255, 255, 255, 1.00", "Done"]
