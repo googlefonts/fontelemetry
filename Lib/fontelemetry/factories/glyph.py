@@ -17,9 +17,13 @@ from fontelemetry import __version__
 
 from fontelemetry.datastructures.color import GlyphsAppColor
 from fontelemetry.datastructures.glyph import GlyphColorHex, GlyphColorRGBA
-from fontelemetry.datastructures.source import GlyphsSource, UFOSource
+from fontelemetry.datastructures.source import (
+    GlyphsSource,
+    UFOSource,
+    UFOGlyphSetSource,
+)
 from fontelemetry.factories.base import FactoryBase
-from fontelemetry.parsers.colordef import ColorDefParserGlyphs
+from fontelemetry.parsers.colordef import ColorDefParserGlyphs, ColorDefParserUFO
 
 
 # --------------------------------
@@ -48,6 +52,8 @@ class OrderedGlyphColorListFactory(FactoryBase):
             self.source_type = "glyphs"
         elif type(self.source_obj) is UFOSource:
             self.source_type = "ufo"
+        elif type(self.source_obj) is UFOGlyphSetSource:
+            self.source_type = "ufogs"
         else:
             self.source_type = None
         self.settings = settings
@@ -74,7 +80,7 @@ class OrderedGlyphColorListFactory(FactoryBase):
             )
         # -- did not define valid UFO source color specification
         if (
-            self.source_type == "ufo"
+            self.source_type == "ufogs"
             and self.color_spec not in self.ufosource_valid_color_specs
         ):
             raise TypeError(
@@ -103,7 +109,8 @@ class OrderedGlyphColorListFactory(FactoryBase):
         return cpd.parse()
 
     def _get_ufo_mapped_colordef_settings(self):
-        pass
+        cpd = ColorDefParserUFO(self.settings)
+        return cpd.parse()
 
     def get(self):
         """Returns an ordered list of instantiated fontelemetry.datastructures.GlyphColor[Format] objects
@@ -140,6 +147,48 @@ class OrderedGlyphColorListFactory(FactoryBase):
                     )
                 )
             return glyphcolorobj_list
-        elif self.source_type == "ufo":
-            # TODO
-            pass
+        elif self.source_type == "ufogs":
+            colordef_settings = self._get_ufo_mapped_colordef_settings()
+            for glyph in self.source_obj.yield_ordered_glyphobj():
+                glyph_name = glyph.name
+
+                if hasattr(glyph, "lib"):
+                    glyph_lib = glyph.lib
+
+                    if "public.markColor" in glyph_lib:
+                        glyph_rgba = glyph_lib["public.markColor"]
+                    else:
+                        glyph_rgba = None
+                else:
+                    glyph_rgba = None
+
+                if hasattr(glyph, "unicodes"):
+                    glyph_unicode = hex(glyph.unicodes[0])
+                else:
+                    glyph_unicode = None
+
+                # define the glyph-specific color indicator value from the
+                # settings file
+                glyph_color_value = ""
+                # if there is no RGBA value defined, it is a "white" uncolored
+                # glyph in the editor, so we define with the white definition
+                if glyph_rgba is None:
+                    color_def_white = getattr(colordef_settings, "white")
+                    glyph_color_value = color_def_white["value"]
+                else:
+                    # for glyphs with color, pull the color value definition
+                    # that was entered in the settings file
+                    for color in colordef_settings.__dict__.keys():
+                        color_def = getattr(colordef_settings, color)
+                        if glyph_rgba == color_def["rgba"]:
+                            glyph_color_value = color_def["value"]
+
+                # TODO: include validation for missing color values
+
+                glyphcolorobj_list.append(
+                    self._get_glyphcolor_obj(
+                        glyph_name, glyph_unicode, glyph_rgba, glyph_color_value
+                    )
+                )
+
+            return glyphcolorobj_list
