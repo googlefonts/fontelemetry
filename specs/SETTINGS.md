@@ -35,9 +35,10 @@ The following text shows all supported settings.  *Please be aware that this pro
     # UFO source files support use of the entire RGBA spectrum for glyph mark colors.
     # Use an informative key name for the color mapping here.
     [color.mark.ufo]
-    red = ["233, 184, 168, 1.00", "Status 1"]
-    orange = ["249, 217, 178, 1.00", "Status 2"]
-    yellow = ["251, 244, 183, 1.00", "Status 3"]
-    white = ["255, 255, 255, 1.00", "Done"]
+    red = ["0.85,0.26,0.06,1", "Status 1"]
+    orange = ["0.99,0.62,0.11,1", "Status 2"]
+    yellow = ["0.97,0.9,0,1", "Status 3"]
+    green = ["0.04,0.57,0.04,1", "Status 4"]
+    white = ["1.0,1.0,1.0,1", "Done"]
 
 ```
