@@ -31,3 +31,12 @@ def get_upscaled_rgb_tuple(downscaled_rgb_tuple):
     rgb_b = int(math.floor(0.5 + rgb_b_down * 255))
     return rgb_r, rgb_g, rgb_b
 
+
+def get_downscaled_rgb_tuple(upscaled_rgb_tuple):
+    """Scales an RGB color object from int 0-255 to decimal 0.0-1.0."""
+    rgb_r_up, rgb_g_up, rgb_b_up = upscaled_rgb_tuple
+    rgb_r = round(rgb_r_up / 255.0, 2)
+    rgb_g = round(rgb_g_up / 255.0, 2)
+    rgb_b = round(rgb_b_up / 255.0, 2)
+    return rgb_r, rgb_g, rgb_b
+
