@@ -25,6 +25,6 @@ test:
 	./testrunner.sh
 
 uninstall:
-	pip3 uninstall --yes fontbakery-reporter
+	pip3 uninstall --yes fontelemetry
 
 .PHONY: all clean dist-build dist-push install install-dev install-user jupyter test uninstall
