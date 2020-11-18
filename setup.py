@@ -18,7 +18,7 @@ INSTALL_REQUIRES = ["fontTools==3.35.0",
                     "iPython==7.2.0",
                     "pandas==0.23.4",
                     "plotly==3.6.0",
-                    "notebook==5.7.8",
+                    "notebook==6.1.5",
                     "toml==0.10.0"]
 # Optional packages
 EXTRAS_REQUIRES = {
