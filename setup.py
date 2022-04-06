@@ -15,7 +15,7 @@ REQUIRES_PYTHON = ">=3.6.0"
 INSTALL_REQUIRES = ["fontTools==3.35.0",
                     "fs<3,>=2.1.1",
                     "glyphsLib==3.1.4",
-                    "iPython==7.2.0",
+                    "iPython==7.16.3",
                     "pandas==0.23.4",
                     "plotly==3.6.0",
                     "notebook==6.4.10",
